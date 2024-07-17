@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+pre{
+    border-radius: 8px;
+    background-color: #2f3640 !important;
+    color: rgb(183, 255, 255) !important;
+    scroll-padding-top: 20px;
+    overflow-x: scroll;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+body{
+  font-family: "Assistant", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.head{
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
