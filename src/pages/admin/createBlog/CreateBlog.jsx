@@ -190,20 +190,24 @@ function CreateBlog() {
                 </div>
 
                 {/* Four Editor  */}
-                <Editor className='w-[500px]'
-                    apiKey='9jo3lu73p1xbfqaw6jvgmsbrmy7qr907nqeafe1wbek6os9d'
-                    onEditorChange={(newValue, editor) => {
-                        setBlogs(prevState => ({
-                            ...prevState,
-                            content: newValue,
-                        }));
-                        setText(editor.getContent({ format: 'text' }));
-                    }}
-                    onInit={(evt, editor) => {
-                        setText(editor.getContent({ format: 'text' }));
-                    }}
-                    
-                />
+                <div className="mb-3 flex flex-col items-center">
+                    <textarea
+                        className={`w-full rounded-3xl p-5 resize-none
+                 outline-none ${mode === 'dark'
+                                ? 'placeholder-black'
+                                : 'placeholder-black'}`}
+                        placeholder="Enter Your Content..."
+                        style={{
+                            background: mode === 'dark'
+                                ? '#dcdde1'
+                                : 'rgb(226, 232, 240)'
+                        }}
+                        name="content"
+                        value={blogs.content}
+                        onChange={(e) => setBlogs({ ...blogs, content: e.target.value })}
+                        rows={10}
+                    />
+                </div>
 
                 {/* Five Submit Button  */}
                 <Button className=" w-full mt-5 rounded-3xl font-mukta text-base"

@@ -9,11 +9,13 @@ import {
 import { Link } from "react-router-dom";
 import myContext from "../../context/data/MyContext";
 import { auth } from "../../firebase/FirebaseConfig";
-import publication from './publication.png';
-import night from './night.png';
+import blogger from './blogger (1).png';
+import moon from './crescent-moon.png';
+import menu from './menu.png';
+import sun2 from './sun2.png';
+import close from './close.png';
 import sun from './sun.png';
-import cross from './cross.png';
-import menu2 from './menu (2).png';
+
 
 export default function Nav() {
     const [openNav, setOpenNav] = useState(false);
@@ -66,7 +68,7 @@ export default function Nav() {
                             {/* Logo Image  */}
                             <img
                                 className='w-10 h-10'
-                                src={publication}
+                                src={blogger}
                             />
                             {/* Logo Text  */}
                             <span>
@@ -82,7 +84,7 @@ export default function Nav() {
                     </div>
 
                     <div className="cursor-pointer" onClick={toggleMode}>
-                        <img className="w-10 h-10" src={mode === 'light' ? night : sun} alt="Toggle mode" />
+                        <img className="w-10 h-10" src={mode === 'light' ? moon : sun} alt="Toggle mode" />
                     </div>
 
                     <div className="ml-auto lg:hidden">
@@ -90,7 +92,7 @@ export default function Nav() {
                         onClick={() => setOpenNav(!openNav)} 
                         style={{ color: mode === 'dark' ? 'white' : 'black' }}>
 
-                            <img className="w-10 h-10 cursor-pointer" src={openNav ? cross : menu2} alt="Toggle menu" />
+                            <img className="w-10 h-10 cursor-pointer" src={openNav ? close : menu} alt="Toggle menu" />
                         </div>
                     </div>
                 </div>
