@@ -80,7 +80,7 @@ function Dashboard() {
                           : "rgb(30, 41, 59)",
                       color: mode === "dark" ? "black" : "white",
                     }}
-                    className="px-8 py-2 rounded-3xl w-36 text-sm font-mukta"
+                    className="px-8 py-2 rounded-3xl w-36 text-sm font-mukta "
                   >
                     Create Blog
                   </Button>

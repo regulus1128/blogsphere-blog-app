@@ -34,23 +34,24 @@ export default function Nav() {
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
 
-            <li className="p-1 font-normal" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
+            <li className="p-1 font-normal hover:underline underline-offset-4" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
                 <Link to="/" className="flex items-center">
                     HOME
                 </Link>
             </li>
 
-            <li className="p-1 font-normal" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
+            <li className="p-1 font-normal hover:underline underline-offset-4" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
                 <Link to="/allblogs" className="flex items-center">
                     YOUR BLOGS
                 </Link>
             </li>
 
-                <li className="p-1 font-normal" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
+                {user && (<li className="p-1 font-normal hover:underline underline-offset-4" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
                     <Link to="/dashboard" className="flex items-center">
                         DASHBOARD
                     </Link>
-                </li>
+                </li>)}
+                
         </ul>
     );
 

@@ -13,6 +13,12 @@ import {
 } from "@material-tailwind/react";
 
 
+const stripHtmlTags = (html) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+}
+
 const EditBlog = () => {
     const { id } = useParams();
     const context = useContext(myContext);
@@ -92,8 +98,12 @@ const EditBlog = () => {
     return (
         <div className="container mx-auto max-w-5xl py-6">
             <div className="p-5" style={{
-                background: mode === 'dark' ? '#353b48' : 'rgb(226, 232, 240)',
-                borderBottom: mode === 'dark' ? '4px solid rgb(226, 232, 240)' : '4px solid rgb(30, 41, 59)'
+                background: mode === 'dark'
+                    ? 'linear-gradient(to right, #0093E9, #80D0C7)'
+                    : 'linear-gradient(to right, #ff512f, #dd2476)',
+                borderBottom: mode === 'dark'
+                    ? ' 4px solid rgb(226, 232, 240)'
+                    : ' 4px solid rgb(30, 41, 59)'
             }}>
                 <div className="mb-2 flex justify-between">
                     <div className="flex gap-2 items-center">
@@ -106,22 +116,22 @@ const EditBlog = () => {
                     </div>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-3 flex flex-col items-center">
                     {thumbnail && (
                         <img className="w-full rounded-md mb-3" src={URL.createObjectURL(thumbnail)} alt="thumbnail" />
                     )}
                     <input
                         type="file"
-                        className="shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] placeholder-black w-full rounded-xl p-2"
+                        className=" placeholder-black w-full rounded-3xl pl-3 pt-2 h-11"
                         style={{ background: mode === 'dark' ? '#dcdde1' : 'rgb(226, 232, 240)' }}
                         onChange={handleThumbnailChange}
                     />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-3 flex flex-col items-center">
                     <input
                         label="Enter your Title"
-                        className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-xl p-2.5 outline-none ${mode === 'dark' ? 'placeholder-black' : 'placeholder-black'}`}
+                        className={`w-full rounded-3xl p-2.5 outline-none ${mode === 'dark' ? 'placeholder-black' : 'placeholder-black'}`}
                         placeholder="Enter Your Title"
                         style={{ background: mode === 'dark' ? '#dcdde1' : 'rgb(226, 232, 240)' }}
                         name="title"
@@ -130,10 +140,10 @@ const EditBlog = () => {
                     />
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-3 flex flex-col items-center">
                     <input
                         label="Enter your Category"
-                        className={`shadow-[inset_0_0_4px_rgba(0,0,0,0.6)] w-full rounded-xl p-2.5 outline-none ${mode === 'dark' ? 'placeholder-black' : 'placeholder-black'}`}
+                        className={`w-full rounded-3xl p-2.5 outline-none ${mode === 'dark' ? 'placeholder-black' : 'placeholder-black'}`}
                         placeholder="Enter Your Category"
                         style={{ background: mode === 'dark' ? '#dcdde1' : 'rgb(226, 232, 240)' }}
                         name="category"
@@ -141,18 +151,25 @@ const EditBlog = () => {
                         onChange={handleChange}
                     />
                 </div>
+                <div className="mb-3 flex flex-col items-center">
+                    <textarea name="content" cols="30" rows="10" className={`w-full rounded-3xl p-5 resize-none
+                 outline-none ${mode === 'dark'
+                                ? 'placeholder-black'
+                                : 'placeholder-black'}`}
+                        placeholder="Enter Your Content..."
+                        style={{
+                            background: mode === 'dark'
+                                ? '#dcdde1'
+                                : 'rgb(226, 232, 240)'
+                        }} value={stripHtmlTags(blogs.content)} onChange={(e) => handleEditorChange(e.target.value)}>
 
-                <Editor
-                    apiKey='9jo3lu73p1xbfqaw6jvgmsbrmy7qr907nqeafe1wbek6os9d'
-                    value={blogs.content}
-                    onEditorChange={handleEditorChange}
-                    onInit={(evt, editor) => {
-                        setText(editor.getContent({ format: 'text' }));
-                    }}
-                />
+                    </textarea>
+
+                </div>
+
 
                 <Button
-                    className="w-full mt-5"
+                    className="w-full mt-5 rounded-3xl font-mukta text-base"
                     onClick={handleSubmit}
                     style={{
                         background: mode === 'dark' ? 'rgb(226, 232, 240)' : 'rgb(30, 41, 59)',

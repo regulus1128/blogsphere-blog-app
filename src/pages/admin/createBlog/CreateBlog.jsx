@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
 import { BsFillArrowLeftCircleFill } from "react-icons/bs"
 import myContext from '../../../context/data/MyContext';
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +10,10 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 import toast from 'react-hot-toast';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { fireDb, storage, auth } from '../../../firebase/FirebaseConfig';
+
+
+
+
 
 function CreateBlog() {
     const context = useContext(myContext);
